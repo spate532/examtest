@@ -1,4 +1,6 @@
 int LEDpin=7;
+unsigned long currentTime;
+unsigned long prevTime=0;
 
 void setup() {
 
@@ -8,6 +10,11 @@ void setup() {
 
 void loop() {
 
-  digitalWrite(LEDpin, HIGH);
+  currentTime=millis();
+
+  if (currentTime-prevTime>2000) {
+    prevTime=currentTime;
+    digitalWrite(LEDpin, HIGH);
+  }
 
 }
